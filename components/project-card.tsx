@@ -1,26 +1,28 @@
-"use client"
-
-import { motion } from "motion/react"
 import { Search, MapPin } from "lucide-react"
 import type { Project } from "@/lib/data"
 
-export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
+export function ProjectCard({
+  project,
+  categoryLabel,
+}: {
+  project: Project
+  categoryLabel?: string
+}) {
   return (
-    <motion.article
-      layout
-      initial={{ opacity: 0, scale: 0.96 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: (index % 3) * 0.06 }}
-      className="group relative aspect-[3/4] overflow-hidden rounded-2xl border border-border bg-card"
-    >
+    <article className="group relative aspect-[3/4] overflow-hidden rounded-2xl border border-border bg-card">
       <img
         src={project.image || "/placeholder.svg"}
         alt={project.title}
-        className="h-full w-full object-cover transition-transform duration-700 ease-out will-transform group-hover:scale-110"
+        className="h-full w-full object-cover transition-transform duration-700 ease-out will-change-transform group-hover:scale-110"
         loading="lazy"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/25 to-transparent" />
+
+      {categoryLabel && (
+        <span className="absolute left-4 top-4 rounded-full bg-background/70 px-3 py-1 text-xs font-semibold tracking-wide text-primary backdrop-blur">
+          {categoryLabel}
+        </span>
+      )}
 
       <span className="absolute right-4 top-4 inline-flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-primary text-primary-foreground opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
         <Search className="h-4 w-4" />
@@ -33,6 +35,6 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
           {project.location}
         </p>
       </div>
-    </motion.article>
+    </article>
   )
 }

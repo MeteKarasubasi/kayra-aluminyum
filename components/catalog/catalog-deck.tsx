@@ -65,7 +65,7 @@ export function CatalogDeck() {
           return (
             <motion.div
               key={p.slug}
-              className="absolute h-full w-[280px] will-transform sm:w-[340px]"
+              className="absolute h-full w-[280px] will-change-transform sm:w-[340px]"
               style={{ transformStyle: "preserve-3d" }}
               animate={{
                 x: pos * 150,

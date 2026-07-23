@@ -136,6 +136,25 @@ export const dict = {
 
   "page.products.title": { tr: "Ürün & Sistemler", en: "Products & Systems" },
   "page.projects.title": { tr: "Projelerimiz", en: "Our Projects" },
+
+  "products.heading": {
+    tr: "Her ölçekte alüminyum sistem çözümleri",
+    en: "Aluminium system solutions at every scale",
+  },
+  "products.sub": {
+    tr: "Konfor, güvenlik ve estetiği bir araya getiren; mühendislik odaklı ürün gamımızı keşfedin.",
+    en: "Discover our engineering-driven product range that unites comfort, safety and aesthetics.",
+  },
+  "feature.1": { tr: "Isı ve ses yalıtımı", en: "Thermal & acoustic insulation" },
+  "feature.2": { tr: "Yüksek dayanıklı elektrostatik boya", en: "High-durability powder coating" },
+  "feature.3": { tr: "Projeye özel ölçü ve montaj", en: "Custom sizing & installation" },
+  "cta.quote": { tr: "Teklif Al", en: "Get a Quote" },
+
+  "projects.heading": { tr: "Hayata geçirdiğimiz projeler", en: "Projects we have delivered" },
+  "projects.sub": {
+    tr: "Konut, ticari ve kurumsal alanlarda tamamladığımız seçili işler.",
+    en: "Selected work delivered across residential, commercial and corporate spaces.",
+  },
 } satisfies Dict
 
 type Ctx = {
