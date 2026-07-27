@@ -90,7 +90,7 @@ export function Navbar() {
             </Link>
             {/* Bayi Giriş Badge */}
             <a
-              href="https://kayraaluminyum.com"
+              href="https://kayrabaluminyum.com"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary backdrop-blur transition-all hover:border-primary hover:bg-primary/20 hover:shadow-lg hover:shadow-primary/10 sm:inline-flex"
@@ -150,7 +150,7 @@ export function Navbar() {
               </Link>
               {/* Bayi Giriş - Mobile */}
               <a
-                href="https://kayraaluminyum.com"
+                href="https://kayrabaluminyum.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-1 flex items-center justify-center gap-2 rounded-lg border border-primary/40 bg-primary/10 px-4 py-3 text-center text-base font-semibold text-primary"
