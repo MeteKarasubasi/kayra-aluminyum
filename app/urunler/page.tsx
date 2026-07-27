@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ProductsClient } from "@/components/products/products-client"
+import { getDbProducts } from "@/lib/data.server"
 
 export const metadata: Metadata = {
   title: "Ürünler | KAYRAB Aluminyum",
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
     "Kış bahçesi, bioklimatik pergola, korkuluk, cam balkon, giydirme cephe ve alüminyum doğrama sistemleri.",
 }
 
-export default function UrunlerPage() {
-  return <ProductsClient />
+export default async function UrunlerPage() {
+  const products = await getDbProducts()
+  return <ProductsClient products={products} />
 }

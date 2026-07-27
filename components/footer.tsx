@@ -4,6 +4,7 @@ import Link from "next/link"
 import { MapPin, Phone, Mail } from "lucide-react"
 import { Logo } from "./logo"
 import { useLang } from "@/lib/i18n"
+import { useSettings } from "@/lib/use-settings"
 import { products } from "@/lib/data"
 
 function InstagramIcon({ className }: { className?: string }) {
@@ -35,7 +36,22 @@ function FacebookIcon({ className }: { className?: string }) {
 }
 
 export function Footer() {
-  const { t } = useLang()
+  const { t, lang } = useLang()
+  const { settings } = useSettings()
+
+  const address = settings[lang === "tr" ? "address_tr" : "address_en"] || "Organize Sanayi Bölgesi, 5. Cad. No: 12, Ankara"
+  const phone = settings.phone || "+90 312 000 00 00"
+  const email = settings.email || "info@kayrab.com.tr"
+  const instagram = settings.instagram || "#"
+  const linkedin = settings.linkedin || "#"
+  const facebook = settings.facebook || "#"
+  const siteTitle = settings.site_title || "KAYRAB ALUMINYUM"
+
+  const socialLinks = [
+    { icon: InstagramIcon, href: instagram },
+    { icon: LinkedinIcon, href: linkedin },
+    { icon: FacebookIcon, href: facebook },
+  ]
 
   return (
     <footer className="relative mt-24 border-t border-border bg-card/40">
@@ -44,10 +60,12 @@ export function Footer() {
           <Logo />
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">{t("footer.desc")}</p>
           <div className="flex gap-2 pt-1">
-            {[InstagramIcon, LinkedinIcon, FacebookIcon].map((Icon, i) => (
+            {socialLinks.map(({ icon: Icon, href }, i) => (
               <a
                 key={i}
-                href="#"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
                 aria-label="Social link"
               >
@@ -76,7 +94,7 @@ export function Footer() {
             <li><Link href="/#hakkimizda" className="transition-colors hover:text-primary">{t("footer.about")}</Link></li>
             <li><Link href="/katalog" className="transition-colors hover:text-primary">{t("footer.catalog")}</Link></li>
             <li><Link href="/projeler" className="transition-colors hover:text-primary">{t("footer.projects")}</Link></li>
-            <li><Link href="/#referanslar" className="transition-colors hover:text-primary">{t("refs.tag")}</Link></li>
+            <li><Link href="/referanslar" className="transition-colors hover:text-primary">{t("refs.tag")}</Link></li>
           </ul>
         </div>
 
@@ -85,15 +103,15 @@ export function Footer() {
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li className="flex gap-3">
               <MapPin className="h-4 w-4 shrink-0 text-primary" />
-              <span>Organize Sanayi Bölgesi, 5. Cad. No: 12, Ankara</span>
+              <span>{address}</span>
             </li>
             <li className="flex gap-3">
               <Phone className="h-4 w-4 shrink-0 text-primary" />
-              <a href="tel:+903120000000" className="transition-colors hover:text-primary">+90 312 000 00 00</a>
+              <a href={`tel:${phone.replace(/\s+/g, "")}`} className="transition-colors hover:text-primary">{phone}</a>
             </li>
             <li className="flex gap-3">
               <Mail className="h-4 w-4 shrink-0 text-primary" />
-              <a href="mailto:info@kayrab.com.tr" className="transition-colors hover:text-primary">info@kayrab.com.tr</a>
+              <a href={`mailto:${email}`} className="transition-colors hover:text-primary">{email}</a>
             </li>
           </ul>
         </div>
@@ -101,8 +119,8 @@ export function Footer() {
 
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-6 text-xs text-muted-foreground sm:flex-row sm:px-6 lg:px-8">
-          <p>© {new Date().getFullYear()} KAYRAB Aluminyum. {t("footer.rights")}</p>
-          <p className="font-display tracking-widest">KAYRAB ALUMINYUM</p>
+          <p>© {new Date().getFullYear()} {siteTitle.split("|")[0].trim()}. {t("footer.rights")}</p>
+          <p className="font-display tracking-widest">{siteTitle.split("|")[0].trim()}</p>
         </div>
       </div>
     </footer>

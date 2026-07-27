@@ -1,0 +1,144 @@
+export type Country = {
+  /** ISO 3166-1 alpha-2 code */
+  code: string
+  /** Flag emoji */
+  flag: string
+  /** E.164 dialing prefix without "+" */
+  dial: string
+  /** Localized names */
+  name: { tr: string; en: string }
+  /**
+   * Group lengths used to mask the national significant number.
+   * The remaining digits are appended as-is in groups of 3.
+   */
+  groups: number[]
+}
+
+const list: Country[] = [
+  { code: "TR", flag: "🇹🇷", dial: "90", name: { tr: "Türkiye", en: "Turkey" }, groups: [3, 3, 2, 2] },
+  { code: "DE", flag: "🇩🇪", dial: "49", name: { tr: "Almanya", en: "Germany" }, groups: [3, 4, 4] },
+  { code: "US", flag: "🇺🇸", dial: "1", name: { tr: "ABD", en: "United States" }, groups: [3, 3, 4] },
+  { code: "GB", flag: "🇬🇧", dial: "44", name: { tr: "İngiltere", en: "United Kingdom" }, groups: [4, 3, 4] },
+  { code: "AE", flag: "🇦🇪", dial: "971", name: { tr: "BAE", en: "United Arab Emirates" }, groups: [2, 3, 4] },
+  { code: "NL", flag: "🇳🇱", dial: "31", name: { tr: "Hollanda", en: "Netherlands" }, groups: [2, 3, 4] },
+  { code: "FR", flag: "🇫🇷", dial: "33", name: { tr: "Fransa", en: "France" }, groups: [1, 2, 2, 2, 2] },
+  { code: "IT", flag: "🇮🇹", dial: "39", name: { tr: "İtalya", en: "Italy" }, groups: [3, 4, 4] },
+  { code: "ES", flag: "🇪🇸", dial: "34", name: { tr: "İspanya", en: "Spain" }, groups: [3, 3, 3] },
+  { code: "AZ", flag: "🇦🇿", dial: "994", name: { tr: "Azerbaycan", en: "Azerbaijan" }, groups: [2, 3, 4] },
+  { code: "RU", flag: "🇷🇺", dial: "7", name: { tr: "Rusya", en: "Russia" }, groups: [3, 3, 4] },
+  { code: "SA", flag: "🇸🇦", dial: "966", name: { tr: "Suudi Arabistan", en: "Saudi Arabia" }, groups: [2, 3, 4] },
+  { code: "QA", flag: "🇶🇦", dial: "974", name: { tr: "Katar", en: "Qatar" }, groups: [4, 4] },
+  { code: "KW", flag: "🇰🇼", dial: "965", name: { tr: "Kuveyt", en: "Kuwait" }, groups: [4, 4] },
+  { code: "EG", flag: "🇪🇬", dial: "20", name: { tr: "Mısır", en: "Egypt" }, groups: [2, 4, 4] },
+  { code: "BE", flag: "🇧🇪", dial: "32", name: { tr: "Belçika", en: "Belgium" }, groups: [4, 3, 3] },
+  { code: "CH", flag: "🇨🇭", dial: "41", name: { tr: "İsviçre", en: "Switzerland" }, groups: [2, 3, 4] },
+  { code: "AT", flag: "🇦🇹", dial: "43", name: { tr: "Avusturya", en: "Austria" }, groups: [1, 3, 4] },
+  { code: "SE", flag: "🇸🇪", dial: "46", name: { tr: "İsveç", en: "Sweden" }, groups: [2, 3, 4] },
+  { code: "NO", flag: "🇳🇴", dial: "47", name: { tr: "Norveç", en: "Norway" }, groups: [4, 2, 3] },
+  { code: "DK", flag: "🇩🇰", dial: "45", name: { tr: "Danimarka", en: "Denmark" }, groups: [2, 3, 3] },
+  { code: "FI", flag: "🇫🇮", dial: "358", name: { tr: "Finlandiya", en: "Finland" }, groups: [3, 4, 4] },
+  { code: "PL", flag: "🇵🇱", dial: "48", name: { tr: "Polonya", en: "Poland" }, groups: [3, 3, 4] },
+  { code: "RO", flag: "🇷🇴", dial: "40", name: { tr: "Romanya", en: "Romania" }, groups: [3, 3, 3] },
+  { code: "GR", flag: "🇬🇷", dial: "30", name: { tr: "Yunanistan", en: "Greece" }, groups: [4, 3, 4] },
+  { code: "PT", flag: "🇵🇹", dial: "351", name: { tr: "Portekiz", en: "Portugal" }, groups: [3, 3, 3] },
+  { code: "IE", flag: "🇮🇪", dial: "353", name: { tr: "İrlanda", en: "Ireland" }, groups: [2, 3, 4] },
+  { code: "CZ", flag: "🇨🇿", dial: "420", name: { tr: "Çekya", en: "Czechia" }, groups: [3, 3, 3] },
+  { code: "HU", flag: "🇭🇺", dial: "36", name: { tr: "Macaristan", en: "Hungary" }, groups: [1, 3, 4] },
+  { code: "UA", flag: "🇺🇦", dial: "380", name: { tr: "Ukrayna", en: "Ukraine" }, groups: [2, 3, 4] },
+  { code: "KZ", flag: "🇰🇿", dial: "7", name: { tr: "Kazakistan", en: "Kazakhstan" }, groups: [3, 3, 4] },
+  { code: "UZ", flag: "🇺🇿", dial: "998", name: { tr: "Özbekistan", en: "Uzbekistan" }, groups: [2, 3, 4] },
+  { code: "KG", flag: "🇰🇬", dial: "996", name: { tr: "Kırgızistan", en: "Kyrgyzstan" }, groups: [3, 3, 4] },
+  { code: "TM", flag: "🇹🇲", dial: "993", name: { tr: "Türkmenistan", en: "Turkmenistan" }, groups: [2, 3, 4] },
+  { code: "TRNC", flag: "🇹🇷", dial: "90", name: { tr: "KKTC", en: "Northern Cyprus" }, groups: [3, 3, 2, 2] },
+  { code: "BG", flag: "🇧🇬", dial: "359", name: { tr: "Bulgaristan", en: "Bulgaria" }, groups: [4, 3, 3] },
+  { code: "RS", flag: "🇷🇸", dial: "381", name: { tr: "Sırbistan", en: "Serbia" }, groups: [2, 3, 4] },
+  { code: "HR", flag: "🇭🇷", dial: "385", name: { tr: "Hırvatistan", en: "Croatia" }, groups: [1, 3, 4] },
+  { code: "BA", flag: "🇧🇦", dial: "387", name: { tr: "Bosna Hersek", en: "Bosnia and Herzegovina" }, groups: [2, 3, 4] },
+  { code: "AL", flag: "🇦🇱", dial: "355", name: { tr: "Arnavutluk", en: "Albania" }, groups: [3, 4, 4] },
+  { code: "MK", flag: "🇲🇰", dial: "389", name: { tr: "Kuzey Makedonya", en: "North Macedonia" }, groups: [2, 3, 4] },
+  { code: "GE", flag: "🇬🇪", dial: "995", name: { tr: "Gürcistan", en: "Georgia" }, groups: [3, 3, 3] },
+  { code: "IR", flag: "🇮🇷", dial: "98", name: { tr: "İran", en: "Iran" }, groups: [3, 4, 4] },
+  { code: "IQ", flag: "🇮🇶", dial: "964", name: { tr: "Irak", en: "Iraq" }, groups: [3, 3, 4] },
+  { code: "JO", flag: "🇯🇴", dial: "962", name: { tr: "Ürdün", en: "Jordan" }, groups: [1, 3, 4] },
+  { code: "LB", flag: "🇱🇧", dial: "961", name: { tr: "Lübnan", en: "Lebanon" }, groups: [2, 3, 4] },
+  { code: "LY", flag: "🇱🇾", dial: "218", name: { tr: "Libya", en: "Libya" }, groups: [2, 3, 4] },
+  { code: "MA", flag: "🇲🇦", dial: "212", name: { tr: "Fas", en: "Morocco" }, groups: [3, 3, 4] },
+  { code: "DZ", flag: "🇩🇿", dial: "213", name: { tr: "Cezayir", en: "Algeria" }, groups: [2, 3, 4] },
+  { code: "TN", flag: "🇹🇳", dial: "216", name: { tr: "Tunus", en: "Tunisia" }, groups: [2, 3, 4] },
+  { code: "CA", flag: "🇨🇦", dial: "1", name: { tr: "Kanada", en: "Canada" }, groups: [3, 3, 4] },
+  { code: "AU", flag: "🇦🇺", dial: "61", name: { tr: "Avustralya", en: "Australia" }, groups: [4, 3, 3] },
+  { code: "CN", flag: "🇨🇳", dial: "86", name: { tr: "Çin", en: "China" }, groups: [3, 4, 4] },
+  { code: "JP", flag: "🇯🇵", dial: "81", name: { tr: "Japonya", en: "Japan" }, groups: [2, 4, 4] },
+  { code: "KR", flag: "🇰🇷", dial: "82", name: { tr: "Güney Kore", en: "South Korea" }, groups: [2, 4, 4] },
+  { code: "IN", flag: "🇮🇳", dial: "91", name: { tr: "Hindistan", en: "India" }, groups: [5, 5] },
+  { code: "PK", flag: "🇵🇰", dial: "92", name: { tr: "Pakistan", en: "Pakistan" }, groups: [4, 7] },
+  { code: "ID", flag: "🇮🇩", dial: "62", name: { tr: "Endonezya", en: "Indonesia" }, groups: [3, 4, 4] },
+  { code: "MY", flag: "🇲🇾", dial: "60", name: { tr: "Malezya", en: "Malaysia" }, groups: [2, 4, 4] },
+  { code: "SG", flag: "🇸🇬", dial: "65", name: { tr: "Singapur", en: "Singapore" }, groups: [4, 4] },
+  { code: "TH", flag: "🇹🇭", dial: "66", name: { tr: "Tayland", en: "Thailand" }, groups: [2, 3, 4] },
+  { code: "VN", flag: "🇻🇳", dial: "84", name: { tr: "Vietnam", en: "Vietnam" }, groups: [3, 4, 4] },
+  { code: "BR", flag: "🇧🇷", dial: "55", name: { tr: "Brezilya", en: "Brazil" }, groups: [2, 5, 4] },
+  { code: "AR", flag: "🇦🇷", dial: "54", name: { tr: "Arjantin", en: "Argentina" }, groups: [2, 4, 4] },
+  { code: "MX", flag: "🇲🇽", dial: "52", name: { tr: "Meksika", en: "Mexico" }, groups: [2, 4, 4] },
+  { code: "ZA", flag: "🇿🇦", dial: "27", name: { tr: "Güney Afrika", en: "South Africa" }, groups: [2, 3, 4] },
+  { code: "NG", flag: "🇳🇬", dial: "234", name: { tr: "Nijerya", en: "Nigeria" }, groups: [3, 3, 4] },
+  { code: "KE", flag: "🇰🇪", dial: "254", name: { tr: "Kenya", en: "Kenya" }, groups: [3, 3, 4] },
+  { code: "GH", flag: "🇬🇭", dial: "233", name: { tr: "Gana", en: "Ghana" }, groups: [2, 3, 4] },
+  { code: "ET", flag: "🇪🇹", dial: "251", name: { tr: "Etiyopya", en: "Ethiopia" }, groups: [2, 3, 4] },
+  { code: "TZ", flag: "🇹🇿", dial: "255", name: { tr: "Tanzanya", en: "Tanzania" }, groups: [3, 3, 4] },
+  { code: "UY", flag: "🇺🇾", dial: "598", name: { tr: "Uruguay", en: "Uruguay" }, groups: [4, 4] },
+  { code: "CL", flag: "🇨🇱", dial: "56", name: { tr: "Şili", en: "Chile" }, groups: [1, 4, 4] },
+  { code: "CO", flag: "🇨🇴", dial: "57", name: { tr: "Kolombiya", en: "Colombia" }, groups: [3, 4, 4] },
+  { code: "PE", flag: "🇵🇪", dial: "51", name: { tr: "Peru", en: "Peru" }, groups: [1, 3, 4] },
+  { code: "NZ", flag: "🇳🇿", dial: "64", name: { tr: "Yeni Zelanda", en: "New Zealand" }, groups: [2, 4, 4] },
+  { code: "HK", flag: "🇭🇰", dial: "852", name: { tr: "Hong Kong", en: "Hong Kong" }, groups: [4, 4] },
+  { code: "TW", flag: "🇹🇼", dial: "886", name: { tr: "Tayvan", en: "Taiwan" }, groups: [2, 4, 4] },
+  { code: "PH", flag: "🇵🇭", dial: "63", name: { tr: "Filipinler", en: "Philippines" }, groups: [3, 3, 4] },
+  { code: "BD", flag: "🇧🇩", dial: "880", name: { tr: "Bangladeş", en: "Bangladesh" }, groups: [4, 7] },
+  { code: "LK", flag: "🇱🇰", dial: "94", name: { tr: "Sri Lanka", en: "Sri Lanka" }, groups: [2, 3, 5] },
+  { code: "AM", flag: "🇦🇲", dial: "374", name: { tr: "Ermenistan", en: "Armenia" }, groups: [2, 3, 4] },
+  { code: "MD", flag: "🇲🇩", dial: "373", name: { tr: "Moldova", en: "Moldova" }, groups: [2, 3, 4] },
+  { code: "BY", flag: "🇧🇾", dial: "375", name: { tr: "Belarus", en: "Belarus" }, groups: [2, 3, 4] },
+  { code: "LT", flag: "🇱🇹", dial: "370", name: { tr: "Litvanya", en: "Lithuania" }, groups: [3, 3, 4] },
+  { code: "LV", flag: "🇱🇻", dial: "371", name: { tr: "Letonya", en: "Latvia" }, groups: [2, 3, 4] },
+  { code: "EE", flag: "🇪🇪", dial: "372", name: { tr: "Estonya", en: "Estonia" }, groups: [4, 4] },
+  { code: "SK", flag: "🇸🇰", dial: "421", name: { tr: "Slovakya", en: "Slovakia" }, groups: [2, 3, 4] },
+  { code: "SI", flag: "🇸🇮", dial: "386", name: { tr: "Slovenya", en: "Slovenia" }, groups: [2, 3, 4] },
+  { code: "IS", flag: "🇮🇸", dial: "354", name: { tr: "İzlanda", en: "Iceland" }, groups: [4, 4] },
+  { code: "LU", flag: "🇱🇺", dial: "352", name: { tr: "Lüksemburg", en: "Luxembourg" }, groups: [4, 4] },
+  { code: "MT", flag: "🇲🇹", dial: "356", name: { tr: "Malta", en: "Malta" }, groups: [4, 4] },
+  { code: "CY", flag: "🇨🇾", dial: "357", name: { tr: "Güney Kıbrıs", en: "Cyprus" }, groups: [2, 3, 4] },
+  { code: "IL", flag: "🇮🇱", dial: "972", name: { tr: "İsrail", en: "Israel" }, groups: [2, 3, 4] },
+  { code: "YE", flag: "🇾🇪", dial: "967", name: { tr: "Yemen", en: "Yemen" }, groups: [3, 3, 4] },
+  { code: "OM", flag: "🇴🇲", dial: "968", name: { tr: "Umman", en: "Oman" }, groups: [3, 3, 4] },
+  { code: "BH", flag: "🇧🇭", dial: "973", name: { tr: "Bahreyn", en: "Bahrain" }, groups: [4, 4] },
+  { code: "SY", flag: "🇸🇾", dial: "963", name: { tr: "Suriye", en: "Syria" }, groups: [3, 3, 4] },
+  { code: "AF", flag: "🇦🇫", dial: "93", name: { tr: "Afganistan", en: "Afghanistan" }, groups: [2, 4, 4] },
+]
+
+export const COUNTRIES: Country[] = list.sort((a, b) =>
+  a.name.tr.localeCompare(b.name.tr, "tr"),
+)
+
+export const DEFAULT_COUNTRY = COUNTRIES.find((c) => c.code === "TR") as Country
+
+export function findCountryByCode(code: string): Country {
+  return COUNTRIES.find((c) => c.code === code) ?? DEFAULT_COUNTRY
+}
+
+/** Mask a string of digits according to the country's group lengths. */
+export function formatNational(digits: string, country: Country): string {
+  const d = digits.replace(/\D/g, "")
+  const parts: string[] = []
+  let i = 0
+  for (const len of country.groups) {
+    if (i >= d.length) break
+    parts.push(d.slice(i, i + len))
+    i += len
+  }
+  while (i < d.length) {
+    parts.push(d.slice(i, i + 3))
+    i += 3
+  }
+  return parts.join(" ").trim()
+}

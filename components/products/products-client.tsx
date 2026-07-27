@@ -3,11 +3,11 @@
 import { motion } from "motion/react"
 import { ArrowUpRight, Check } from "lucide-react"
 import Link from "next/link"
-import { products } from "@/lib/data"
+import { products as staticProducts, type Product } from "@/lib/data"
 import { useLang } from "@/lib/i18n"
 import { Reveal } from "@/components/reveal"
 
-export function ProductsClient() {
+export function ProductsClient({ products = staticProducts }: { products?: Product[] }) {
   const { t } = useLang()
 
   return (
@@ -21,12 +21,12 @@ export function ProductsClient() {
               {t("nav.products")}
             </p>
           </Reveal>
-          <Reveal delay={0.06}>
+          <Reveal index={1}>
             <h1 className="mt-4 max-w-3xl font-display text-4xl font-bold tracking-tight text-balance sm:text-5xl">
               {t("products.heading")}
             </h1>
           </Reveal>
-          <Reveal delay={0.12}>
+          <Reveal index={2}>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               {t("products.sub")}
             </p>
@@ -63,17 +63,17 @@ export function ProductsClient() {
                 </Reveal>
 
                 <div className={reversed ? "lg:order-1" : ""}>
-                  <Reveal delay={0.08}>
+                  <Reveal index={1}>
                     <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
                       {t(p.titleKey)}
                     </h2>
                   </Reveal>
-                  <Reveal delay={0.14}>
+                  <Reveal index={2}>
                     <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
                       {t(p.descKey)}
                     </p>
                   </Reveal>
-                  <Reveal delay={0.2}>
+                  <Reveal index={3}>
                     <ul className="mt-6 flex flex-col gap-3">
                       {[t("feature.1"), t("feature.2"), t("feature.3")].map((f) => (
                         <li key={f} className="flex items-center gap-3 text-foreground">
@@ -85,7 +85,7 @@ export function ProductsClient() {
                       ))}
                     </ul>
                   </Reveal>
-                  <Reveal delay={0.26}>
+                  <Reveal index={4}>
                     <Link
                       href="/iletisim"
                       className="group mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.03] active:scale-95"

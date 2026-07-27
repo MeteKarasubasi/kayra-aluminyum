@@ -4,10 +4,10 @@ import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { SectionHeading, Reveal } from "@/components/reveal"
 import { ProjectCard } from "@/components/project-card"
-import { projects } from "@/lib/data"
+import { projects as staticProjects, type Project } from "@/lib/data"
 import { useLang } from "@/lib/i18n"
 
-export function ProjectsSection() {
+export function ProjectsSection({ projects = staticProjects }: { projects?: Project[] }) {
   const { t } = useLang()
   const featured = projects.slice(0, 4)
 

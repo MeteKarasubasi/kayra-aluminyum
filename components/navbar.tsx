@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "motion/react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, LogIn } from "lucide-react"
 import { Logo } from "./logo"
 import { LangToggle } from "./lang-toggle"
 import { useLang, type dict } from "@/lib/i18n"
@@ -17,6 +17,7 @@ const items: NavItem[] = [
   { href: "/urunler", key: "nav.products" },
   { href: "/katalog", key: "nav.catalog" },
   { href: "/projeler", key: "nav.projects" },
+  { href: "/referanslar", key: "nav.references" },
   { href: "/iletisim", key: "nav.contact" },
 ]
 
@@ -53,7 +54,7 @@ export function Navbar() {
             <Logo />
           </Link>
 
-          <ul className="hidden items-center gap-1 md:flex">
+          <ul className="hidden items-center gap-1 lg:flex">
             {items.map((item) => {
               const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)
               return (
@@ -87,10 +88,20 @@ export function Navbar() {
             >
               {t("nav.quote")}
             </Link>
+            {/* Bayi Giriş Badge */}
+            <a
+              href="https://kayraaluminyum.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary backdrop-blur transition-all hover:border-primary hover:bg-primary/20 hover:shadow-lg hover:shadow-primary/10 sm:inline-flex"
+            >
+              <LogIn className="h-3.5 w-3.5" />
+              {t("nav.dealer")}
+            </a>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground md:hidden"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground lg:hidden"
               aria-label="Menu"
               aria-expanded={open}
             >
@@ -107,7 +118,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-b border-border bg-background/95 backdrop-blur-xl md:hidden"
+            className="overflow-hidden border-b border-border bg-background/95 backdrop-blur-xl lg:hidden"
           >
             <ul className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4">
               {items.map((item, i) => {
@@ -137,6 +148,16 @@ export function Navbar() {
               >
                 {t("nav.quote")}
               </Link>
+              {/* Bayi Giriş - Mobile */}
+              <a
+                href="https://kayraaluminyum.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 flex items-center justify-center gap-2 rounded-lg border border-primary/40 bg-primary/10 px-4 py-3 text-center text-base font-semibold text-primary"
+              >
+                <LogIn className="h-4 w-4" />
+                {t("nav.dealer")}
+              </a>
             </ul>
           </motion.div>
         )}

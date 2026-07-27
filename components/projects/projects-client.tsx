@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react"
 import { motion, AnimatePresence, LayoutGroup } from "motion/react"
-import { projects, type ProjectCategory } from "@/lib/data"
+import { projects as staticProjects, type Project, type ProjectCategory } from "@/lib/data"
 import { useLang } from "@/lib/i18n"
 import { Reveal } from "@/components/reveal"
 import { ProjectCard } from "@/components/project-card"
@@ -17,13 +17,13 @@ const filters: { key: Filter; labelKey: Parameters<ReturnType<typeof useLang>["t
   { key: "corporate", labelKey: "projects.filter.corporate" },
 ]
 
-export function ProjectsClient() {
+export function ProjectsClient({ projects = staticProjects }: { projects?: Project[] }) {
   const { t } = useLang()
   const [active, setActive] = useState<Filter>("all")
 
   const visible = useMemo(
     () => (active === "all" ? projects : projects.filter((p) => p.category === active)),
-    [active],
+    [active, projects],
   )
 
   return (
@@ -36,12 +36,12 @@ export function ProjectsClient() {
               {t("projects.tag")}
             </p>
           </Reveal>
-          <Reveal delay={0.06}>
+          <Reveal index={1}>
             <h1 className="mt-4 max-w-3xl font-display text-4xl font-bold tracking-tight text-balance sm:text-5xl">
               {t("projects.heading")}
             </h1>
           </Reveal>
-          <Reveal delay={0.12}>
+          <Reveal index={2}>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               {t("projects.sub")}
             </p>

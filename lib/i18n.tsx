@@ -105,6 +105,23 @@ export const dict = {
   "catalog.hint": { tr: "Kaydırın veya okları kullanın", en: "Swipe or use the arrows" },
   "catalog.page": { tr: "Sayfa", en: "Page" },
   "catalog.explore": { tr: "İncele", en: "Explore" },
+  "catalog.pdf.title": { tr: "Kataloğun Tamamı", en: "The Full Catalog" },
+  "catalog.pdf.desc": {
+    tr: "Tüm sistemlerimizin teknik detaylarını ve ürün kodlarını içeren kataloğu inceleyin veya indirin.",
+    en: "Browse or download the catalog containing technical details and product codes of all our systems.",
+  },
+  "catalog.pdf.download": { tr: "PDF İndir", en: "Download PDF" },
+  "catalog.pdf.open": { tr: "Yeni Sekmede Aç", en: "Open in New Tab" },
+  "catalog.pdf.empty": { tr: "Katalog yakında eklenecek.", en: "Catalog coming soon." },
+
+  "hotspots.hint": {
+    tr: "Parlayan noktaların üzerine gelerek ürünlerimizi keşfedin",
+    en: "Hover over the glowing points to explore our products",
+  },
+  "hotspots.tap": {
+    tr: "Noktalara dokunarak ürünleri keşfedin",
+    en: "Tap the points to explore products",
+  },
 
   "footer.desc": {
     tr: "KAYRAB Aluminyum, alüminyum ve cam sistemlerinde güvenilir çözüm ortağınız.",
@@ -128,7 +145,11 @@ export const dict = {
   "contact.name": { tr: "Ad Soyad", en: "Full Name" },
   "contact.email": { tr: "E-posta", en: "Email" },
   "contact.phone": { tr: "Telefon", en: "Phone" },
+  "contact.phone.placeholder": { tr: "5XX XXX XX XX", en: "5XX XXX XX XX" },
+  "contact.phone.search": { tr: "Ülke ara...", en: "Search country..." },
+  "contact.phone.empty": { tr: "Ülke bulunamadı", en: "No country found" },
   "contact.message": { tr: "Mesajınız", en: "Your Message" },
+  "contact.message.hint": { tr: "En az 10 karakter", en: "At least 10 characters" },
   "contact.send": { tr: "Gönder", en: "Send" },
   "contact.sent": { tr: "Mesajınız alındı, teşekkürler!", en: "Message received, thank you!" },
   "contact.address": { tr: "Adres", en: "Address" },
@@ -155,6 +176,65 @@ export const dict = {
     tr: "Konut, ticari ve kurumsal alanlarda tamamladığımız seçili işler.",
     en: "Selected work delivered across residential, commercial and corporate spaces.",
   },
+
+  // Navigation extras
+  "nav.references": { tr: "Referanslar", en: "References" },
+  "nav.dealer": { tr: "Bayi Giriş", en: "Dealer Login" },
+
+  // References page
+  "refs.page.title": { tr: "Referanslarımız", en: "Our References" },
+  "refs.page.desc": {
+    tr: "Yıllardır güvenilir iş ortağı olarak birlikte çalıştığımız markalar ve kurumsal müşterilerimiz.",
+    en: "The brands and corporate clients we have proudly partnered with over the years.",
+  },
+  "refs.page.heading": {
+    tr: "Güven veren iş birlikleri",
+    en: "Partnerships built on trust",
+  },
+  "refs.page.sub": {
+    tr: "Türkiye'nin önde gelen markalarıyla gerçekleştirdiğimiz projeler, kalitemizin en güçlü kanıtıdır.",
+    en: "Projects delivered with Turkey's leading brands are the strongest proof of our quality.",
+  },
+
+  // Contact page extras
+  "contact.page.title": { tr: "İletişim | KAYRAB Aluminyum", en: "Contact | KAYRAB Aluminyum" },
+  "contact.page.heading": {
+    tr: "Projeleriniz için yanınızdayız",
+    en: "We are here for your projects",
+  },
+  "contact.page.sub": {
+    tr: "Sorularınız, teklif talepleriniz veya iş birliği fırsatları için bize ulaşın.",
+    en: "Reach out for questions, quote requests, or partnership opportunities.",
+  },
+  "contact.hours.value": { tr: "Pazartesi – Cumartesi: 08:00 – 18:00", en: "Monday – Saturday: 08:00 – 18:00" },
+  "contact.address.value": {
+    tr: "Organize Sanayi Bölgesi, 5. Cad. No: 12, Ankara",
+    en: "Organized Industrial Zone, 5th St. No: 12, Ankara",
+  },
+  "contact.phone.value": { tr: "+90 312 000 00 00", en: "+90 312 000 00 00" },
+  "contact.email.value": { tr: "info@kayrab.com.tr", en: "info@kayrab.com.tr" },
+  "contact.sending": { tr: "Gönderiliyor...", en: "Sending..." },
+  "contact.error": { tr: "Bir hata oluştu, lütfen tekrar deneyin.", en: "An error occurred, please try again." },
+  "contact.map.title": { tr: "Konumumuz", en: "Our Location" },
+  "contact.info": { tr: "İletişim Bilgileri", en: "Contact Information" },
+  "contact.info.desc": {
+    tr: "Aşağıdaki kanallardan bize doğrudan ulaşabilirsiniz.",
+    en: "You can reach us directly through the channels below.",
+  },
+
+  // Project detail page
+  "project.back": { tr: "Projelere Dön", en: "Back to Projects" },
+  "project.info": { tr: "Proje Bilgileri", en: "Project Information" },
+  "project.location": { tr: "Konum", en: "Location" },
+  "project.area": { tr: "Alan", en: "Area" },
+  "project.year": { tr: "Yıl", en: "Year" },
+  "project.category": { tr: "Kategori", en: "Category" },
+  "project.client": { tr: "Müşteri", en: "Client" },
+  "project.gallery": { tr: "Proje Galerisi", en: "Project Gallery" },
+  "project.products": { tr: "Kullanılan Sistemler", en: "Systems Used" },
+  "project.others": { tr: "Diğer Projeler", en: "Other Projects" },
+  "project.notfound": { tr: "Proje bulunamadı", en: "Project not found" },
+  "project.description": { tr: "Proje Detayı", en: "Project Details" },
 } satisfies Dict
 
 type Ctx = {

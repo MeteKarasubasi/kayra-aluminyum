@@ -4,15 +4,21 @@ import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { SectionHeading, Reveal } from "@/components/reveal"
 import { ProductCard } from "@/components/product-card"
-import { products } from "@/lib/data"
+import { SystemHotspots } from "@/components/home/system-hotspots"
+import { products as staticProducts, type Product } from "@/lib/data"
 import { useLang } from "@/lib/i18n"
 
-export function ProductsSection() {
+export function ProductsSection({ products = staticProducts }: { products?: Product[] }) {
   const { t } = useLang()
 
   return (
     <section id="urunler" className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-      <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+      {/* Interactive hotspot render above the heading */}
+      <Reveal>
+        <SystemHotspots products={products} />
+      </Reveal>
+
+      <div className="mt-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
         <SectionHeading tag={t("products.tag")} title={t("products.title")} desc={t("products.desc")} />
         <Reveal index={2}>
           <Link

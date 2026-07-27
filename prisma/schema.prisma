@@ -1,0 +1,129 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id           String     @id @default(cuid())
+  email        String     @unique
+  passwordHash String
+  name         String
+  role         String     @default("admin")
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  logs         AdminLog[]
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String?  @db.Text
+  location    String
+  category    String
+  image       String
+  gallery     String[]
+  products    String[]
+  area        String?
+  year        String?
+  client      String?
+  isActive    Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Product {
+  id        String   @id @default(cuid())
+  titleTr   String
+  titleEn   String
+  slug      String   @unique
+  descTr    String?  @db.Text
+  descEn    String?  @db.Text
+  image     String
+  code      String
+  features  String[]
+  isActive  Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Reference {
+  id        String   @id @default(cuid())
+  name      String
+  logo      String
+  website   String?
+  isActive  Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  message   String   @db.Text
+  system    String?
+  ip        String?
+  country   String?
+  city      String?
+  language  String?
+  isRead    Boolean  @default(false)
+  isSpam    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model PageVisit {
+  id        String   @id @default(cuid())
+  path      String
+  ip        String?
+  userAgent String?
+  referrer  String?
+  country   String?
+  city      String?
+  language  String?
+  device    String?
+  browser   String?
+  isBot     Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([path])
+  @@index([createdAt])
+  @@index([country])
+  @@index([isBot])
+}
+
+model AdminLog {
+  id        String   @id @default(cuid())
+  adminId   String
+  admin     Admin    @relation(fields: [adminId], references: [id])
+  action    String
+  target    String?
+  details   String?  @db.Text
+  createdAt DateTime @default(now())
+
+  @@index([adminId])
+  @@index([createdAt])
+}
+
+model SiteSetting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String   @db.Text
+  updatedAt DateTime @updatedAt
+}
+
+model Asset {
+  id        String   @id @default(cuid())
+  filename  String
+  mimeType  String
+  size      Int
+  data      Bytes
+  createdAt DateTime @default(now())
+}
