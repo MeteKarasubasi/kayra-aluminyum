@@ -10,10 +10,13 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
   <link rel="stylesheet" href="/css/tailwind.css" />
   <link rel="stylesheet" href="/css/app.css" />
+  <!-- PDF.js Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
 <body class="font-sans antialiased">
   <div data-include="/components/navbar.html"></div>
   <main class="min-h-screen">
+    <!-- Top Interactive Deck Showcase -->
     <section class="relative min-h-screen overflow-hidden pt-28 pb-20">
       <div aria-hidden class="pointer-events-none absolute left-1/2 top-40 -z-10 h-[420px] w-[820px] -translate-x-1/2 rounded-full opacity-25 blur-3xl" style="background: radial-gradient(circle, oklch(0.78 0.148 62) 0%, transparent 70%);"></div>
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -32,34 +35,18 @@
       </div>
     </section>
 
+    <!-- Bottom Digital PDF Flipbook / Page Showcase Section -->
     <section id="catalog-pdf-section" class="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8" style="display:none">
       <div aria-hidden class="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[380px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-3xl" style="background: radial-gradient(circle, oklch(0.78 0.148 62) 0%, transparent 70%);"></div>
-      <div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-        <div class="max-w-2xl">
-          <div class="reveal"><span class="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.3em] text-primary"><span class="h-px w-8 bg-primary"></span><span data-i18n="catalog.tag">DİJİTAL KATALOG</span></span></div>
-          <h2 class="reveal mt-4 text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl" data-i18n="catalog.pdf.title">Kataloğun Tamamı</h2>
-          <p class="reveal mt-4 text-pretty text-base leading-relaxed text-muted-foreground" data-i18n="catalog.pdf.desc">Tüm sistemlerimizin teknik detaylarını ve ürün kodlarını içeren kataloğu inceleyin veya indirin.</p>
-        </div>
-        <div class="reveal" style="transition-delay:.16s">
-          <div class="flex flex-wrap items-center gap-3">
-            <a id="catalog-pdf-open" href="#" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-border px-5 py-2.5 text-sm font-semibold transition-colors hover:border-primary hover:text-primary" data-i18n="catalog.pdf.open">Yeni Sekmede Aç</a>
-            <a id="catalog-download" href="#" download class="group inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.03] active:scale-95" data-i18n="catalog.pdf.download">PDF İndir</a>
-          </div>
-        </div>
+      <div class="mb-8">
+        <div class="reveal"><span class="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.3em] text-primary"><span class="h-px w-8 bg-primary"></span><span data-i18n="catalog.tag">TEKNİK DOKÜMAN</span></span></div>
+        <h2 class="reveal mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl" data-i18n="catalog.pdf.title">Kataloğun Tamamı</h2>
+        <p class="reveal mt-2 text-base text-muted-foreground" data-i18n="catalog.pdf.desc">Tüm sistemlerimizin teknik detaylarını ve ürün kodlarını içeren kataloğu sayfa sayfa inceleyin veya indirin.</p>
       </div>
-      <div class="reveal" style="transition-delay:.24s">
-        <div class="relative mx-auto mt-12 max-w-4xl">
-          <div aria-hidden class="absolute inset-x-4 -bottom-3 h-full rotate-[1.2deg] rounded-3xl border border-border/70 bg-card/50"></div>
-          <div aria-hidden class="absolute inset-x-8 -bottom-6 h-full -rotate-[1.6deg] rounded-3xl border border-border/40 bg-card/30"></div>
-          <div class="relative overflow-hidden rounded-3xl border border-border bg-card/80 shadow-2xl backdrop-blur">
-            <div class="flex items-center gap-3 border-b border-border bg-muted/40 px-5 py-3.5">
-              <div class="flex gap-1.5"><span class="size-3 rounded-full bg-destructive/70"></span><span class="size-3 rounded-full bg-primary/70"></span><span class="size-3 rounded-full bg-emerald-500/70"></span></div>
-              <div class="flex min-w-0 flex-1 items-center justify-center gap-2 text-xs font-medium text-muted-foreground"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-3.5 shrink-0 text-primary"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span class="truncate font-mono">KATALOG</span></div>
-              <span class="hidden rounded-full border border-border px-2.5 py-0.5 text-[10px] font-semibold tracking-widest text-muted-foreground sm:block">PDF</span>
-            </div>
-            <div id="catalog-pdf-frame-slot" class="block w-full" style="height:70vh"></div>
-          </div>
-        </div>
+      
+      <!-- Interactive PDF Flipbook Mount Point -->
+      <div class="reveal" style="transition-delay:.2s">
+        <div id="catalog-pdf-mount"></div>
       </div>
     </section>
   </main>
@@ -69,6 +56,7 @@
   <script src="/js/config.js"></script>
   <script src="/js/api.js"></script>
   <script src="/js/catalog-deck.js"></script>
+  <script src="/js/catalog-pdf.js"></script>
   <script src="/js/main.js"></script>
   <script>
     async function render() {
@@ -77,18 +65,16 @@
       CatalogDeck.render(products.sort((a,b)=>(a.order||0)-(b.order||0)), document.getElementById("catalog-deck-mount"));
       I18N.apply();
       App.initReveal();
+
       const settings = await API.settings();
       const pdf = settings && settings.catalog_pdf_url ? settings.catalog_pdf_url.trim() : "";
       const section = document.getElementById("catalog-pdf-section");
-      if (pdf) {
+      const pdfMount = document.getElementById("catalog-pdf-mount");
+      
+      if (pdf && pdfMount) {
         const abs = resolveUrl(pdf);
-        console.log("[katalog] PDF:", { pdf, abs, KAYRA: window.KAYRA_API_BASE, BACKEND: window.KAYRA_BACKEND_BASE });
-        const viewer = "/vendor/pdfjs/web/viewer.html?file=" + encodeURIComponent(abs);
-        const slot = document.getElementById("catalog-pdf-frame-slot");
-        if (slot) slot.innerHTML = `<iframe src="${viewer}" title="Katalog" class="block w-full" style="width:100%;height:70vh;border:0;background:#1a1a1a"></iframe>`;
-        document.getElementById("catalog-download").href = abs;
-        document.getElementById("catalog-pdf-open").href = abs;
         section.style.display = "block";
+        CatalogPdf.init(abs, pdfMount);
       }
     }
     document.addEventListener("app-ready", render);

@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /></noscript>
   <link rel="stylesheet" href="/css/admin.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+  <!-- PDF.js Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
 <body>
   <div class="app">
@@ -20,7 +23,7 @@
       <main class="content">
         <div class="card card-pad">
           <div class="section-head">📄 Katalog PDF Yönetimi</div>
-          <p class="text-sm text-muted mb-4">Yüklediğiniz PDF, web sitesinin katalog sayfasında kaydırmalı kartların altındaki özel görüntüleyicide gösterilir. Boş bırakırsanız bu bölüm sitede görünmez.</p>
+          <p class="text-sm text-muted mb-4">Yüklediğiniz PDF, web sitesinin katalog sayfasında kaydırmalı kartların altındaki özel interaktif görüntüleyicide gösterilir.</p>
 
           <div id="current-status" class="mb-4"></div>
 
@@ -31,17 +34,10 @@
             </div>
           </form>
 
-          <!-- PDF Önizleme -->
-          <div id="pdf-preview-wrap" style="display:none" class="mt-4">
-            <div class="section-head" style="margin-top:1.5rem">📑 PDF Önizleme</div>
-            <div class="pdf-preview-window">
-              <div class="pdf-chrome">
-                <div class="pdf-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
-                <span class="pdf-label">KATALOG</span>
-                <span class="pdf-badge">PDF</span>
-              </div>
-              <div id="pdf-frame-slot"></div>
-            </div>
+          <!-- Interaktif PDF Canlı Önizleme -->
+          <div id="pdf-preview-wrap" style="display:none" class="mt-6">
+            <div class="section-head" style="margin-top:1.5rem">📑 Canlı Katalog Önizleme</div>
+            <div id="pdf-frame-slot"></div>
           </div>
         </div>
       </main>
@@ -51,6 +47,7 @@
   <script src="/js/admin/api.js"></script>
   <script src="/js/admin/ui.js"></script>
   <script src="/js/admin/auth.js"></script>
+  <script src="/js/catalog-pdf.js"></script>
   <script src="/js/main.js"></script>
   <script src="/js/admin/catalog.js"></script>
 </body>

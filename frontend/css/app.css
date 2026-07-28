@@ -247,3 +247,116 @@ main { animation: pageIn .5s cubic-bezier(.22,1,.36,1); }
   border-color: var(--primary);
   box-shadow: 0 2px 12px oklch(0.78 0.148 62 / .3);
 }
+
+/* ============================================================
+   DIGITAL CATALOG PDF INTERACTIVE VIEWER
+   ============================================================ */
+.catalog-pdf-viewer {
+  border-radius: 1.5rem;
+  border: 1px solid var(--border);
+  background: oklch(0.20 0.005 60 / .95);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+}
+.pdf-viewer-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .85rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: oklch(0.16 0.004 60 / .6);
+}
+.pdf-action-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  padding: .45rem .85rem; border-radius: 999px;
+  font-size: .8rem; font-weight: 600;
+  border: 1px solid var(--border);
+  background: var(--card); color: var(--foreground);
+  transition: all .2s; cursor: pointer;
+}
+.pdf-action-btn:hover {
+  border-color: var(--primary); color: var(--primary);
+  background: oklch(0.78 0.148 62 / .1);
+}
+.pdf-action-btn.pdf-btn-primary {
+  background: var(--primary); color: oklch(0.17 0.004 60);
+  border-color: var(--primary);
+}
+.pdf-action-btn.pdf-btn-primary:hover {
+  opacity: 0.9; transform: translateY(-1px);
+}
+
+.pdf-viewer-stage {
+  position: relative; min-height: 480px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem 1rem;
+  background: radial-gradient(circle at center, oklch(0.24 0.006 60) 0%, oklch(0.16 0.004 60) 100%);
+}
+.pdf-loading-spinner {
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  color: var(--muted-foreground); font-size: .875rem;
+}
+.spinner-circle {
+  width: 2.5rem; height: 2.5rem; border-radius: 999px;
+  border: 3px solid var(--border); border-top-color: var(--primary);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.pdf-page-display {
+  display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+  width: 100%; max-width: 52rem;
+}
+.pdf-paper-card {
+  position: relative;
+  max-width: 42rem; width: 100%;
+  border-radius: .75rem; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.1);
+  background: #ffffff;
+  transition: transform .3s cubic-bezier(.22,1,.36,1);
+}
+.pdf-paper-card img {
+  display: block; width: 100%; height: auto;
+  max-height: 70vh; object-fit: contain;
+}
+
+.pdf-nav-btn {
+  width: 3rem; height: 3rem; border-radius: 999px; flex-shrink: 0;
+  border: 1px solid var(--border); background: var(--card);
+  color: var(--foreground); font-size: 1.5rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: all .2s; cursor: pointer;
+}
+.pdf-nav-btn:hover:not(:disabled) {
+  border-color: var(--primary); color: var(--primary);
+  background: oklch(0.78 0.148 62 / .15); transform: scale(1.1);
+}
+.pdf-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.pdf-viewer-footer {
+  display: flex; flex-direction: column; align-items: center; gap: .85rem;
+  padding: 1rem 1.5rem; border-top: 1px solid var(--border);
+  background: oklch(0.16 0.004 60 / .6);
+}
+.pdf-counter-badge {
+  font-family: ui-monospace, monospace; font-size: .85rem; font-weight: 600;
+  color: var(--foreground); padding: .25rem .75rem; border-radius: 999px;
+  background: var(--card); border: 1px solid var(--border);
+}
+.pdf-thumbs-strip {
+  display: flex; gap: .6rem; max-width: 100%; overflow-x: auto;
+  padding: .25rem 0;
+}
+.pdf-thumb-btn {
+  position: relative; width: 3.25rem; height: 4.25rem; flex-shrink: 0;
+  border-radius: .4rem; overflow: hidden; border: 1.5px solid var(--border);
+  background: var(--card); cursor: pointer; transition: all .2s;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .75rem; font-weight: 600; color: var(--muted-foreground);
+}
+.pdf-thumb-btn img { width: 100%; height: 100%; object-fit: cover; }
+.pdf-thumb-btn.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px oklch(0.78 0.148 62 / .4);
+  transform: scale(1.08);
+}
+

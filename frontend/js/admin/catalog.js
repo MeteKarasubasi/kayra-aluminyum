@@ -12,13 +12,13 @@
   function showPreview(url) {
     const wrap = document.getElementById("pdf-preview-wrap");
     const slot = document.getElementById("pdf-frame-slot");
-    if (!slot) return;
+    if (!slot || !wrap) return;
     if (url) {
       const abs = resolveBackend(url);
-      console.log("[admin-katalog] PDF:", { url, abs, resolveUrl: typeof window.resolveUrl, BACKEND: window.KAYRA_BACKEND_BASE });
-      const viewer = "/vendor/pdfjs/web/viewer.html?file=" + encodeURIComponent(abs);
-      slot.innerHTML = `<iframe src="${viewer}" title="Katalog Önizleme" style="width:100%;height:50vh;border:0;display:block;background:#1a1a1a"></iframe>`;
       wrap.style.display = "block";
+      if (window.CatalogPdf) {
+        window.CatalogPdf.init(abs, slot);
+      }
     } else {
       slot.innerHTML = "";
       wrap.style.display = "none";
@@ -59,7 +59,6 @@
 
       document.getElementById("upload-slot").innerHTML = UI.uploadField("c-pdf", "doc", currentUrl);
       UI.bindUpload("c-pdf", "doc", function (url) {
-        // Show preview immediately after upload
         showPreview(url);
       });
 
