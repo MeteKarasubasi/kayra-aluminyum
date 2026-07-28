@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Giriş | KAYRAB Aluminyum</title>
+  <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <div class="login-wrap">
+    <div class="login-card">
+      <h1>KAYRAB Admin</h1>
+      <p class="sub">Yönetim paneline giriş yapın</p>
+      <form class="login-form" id="login-form">
+        <div>
+          <label for="email">E-posta</label>
+          <input id="email" type="email" required autocomplete="email" />
+        </div>
+        <div>
+          <label for="password">Şifre</label>
+          <input id="password" type="password" required autocomplete="current-password" />
+        </div>
+        <div id="login-error" class="login-error hidden"></div>
+        <button type="submit" class="login-btn">Giriş Yap</button>
+      </form>
+    </div>
+  </div>
+  <script src="/js/admin/api.js"></script>
+  <script src="/js/admin/ui.js"></script>
+  <script>
+    if (AdminAPI.getToken()) location.href = "/admin/index.html";
+    document.getElementById("login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const err = document.getElementById("login-error");
+      err.classList.add("hidden");
+      const btn = e.target.querySelector("button");
+      const orig = btn.textContent; btn.textContent = "Giriş..."; btn.disabled = true;
+      try {
+        const r = await AdminAPI.login(document.getElementById("email").value, document.getElementById("password").value);
+        AdminAPI.setToken(r.token, r.admin);
+        location.href = "/admin/index.html";
+      } catch (ex) {
+        err.textContent = ex.message || "Giriş başarısız.";
+        err.classList.remove("hidden");
+      } finally { btn.textContent = orig; btn.disabled = false; }
+    });
+  </script>
+</body>
+</html>

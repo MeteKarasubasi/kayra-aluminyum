@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>PDF.js Test</title>
+<style>body{margin:0;background:#1a1a1a}iframe{width:100%;height:100vh;border:0}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.min.mjs" type="module"></script></head>
+<body>
+<canvas id="cv" style="width:100%"></canvas>
+<script type="module">
+import * as pdfjsLib from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.min.mjs";
+pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.worker.min.mjs";
+const url = "http://localhost:5281/docs/0b0eca904d9c444d88ef22f15145b132.pdf";
+try {
+  const doc = await pdfjsLib.getDocument(url).promise;
+  const page = await doc.getPage(1);
+  const canvas = document.getElementById("cv");
+  const ctx = canvas.getContext("2d");
+  const viewport = page.getViewport({ scale: 1.2 });
+  canvas.width = viewport.width;
+  canvas.height = viewport.height;
+  await page.render({ canvasContext: ctx, viewport }).promise;
+  document.title = "PDF.js OK — page 1 of " + doc.numPages;
+} catch (e) {
+  document.body.innerHTML = "<pre style='color:#f77;padding:1rem'>" + e + "</pre>";
+}
+</script>
+</body></html>

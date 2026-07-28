@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ziyaretçiler | KAYRAB Admin</title>
+  <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <div class="app">
+    <div data-include="/components/admin-sidebar.html"></div>
+    <div class="main">
+      <header class="topbar">
+        <div class="left flex gap-2"><button class="burger btn btn-soft btn-sm">☰</button><h1>Ziyaretçiler</h1></div>
+        <div class="user"><span class="text-sm text-muted" data-user-email></span><span class="avatar" data-user-initial>?</span></div>
+      </header>
+      <main class="content">
+        <div class="toolbar">
+          <div class="left flex gap-2">
+            <select id="days" class="search" style="min-width:10rem">
+              <option value="7">Son 7 gün</option>
+              <option value="30" selected>Son 30 gün</option>
+              <option value="90">Son 90 gün</option>
+            </select>
+          </div>
+        </div>
+        <div class="stat-grid mb-4" id="summary"></div>
+        <div class="card"><div class="table-wrap"><table id="table"><thead><tr>
+          <th>Yol</th><th>IP</th><th>Cihaz</th><th>Tarayıcı</th><th>Bot</th><th>Tarih</th>
+        </tr></thead><tbody></tbody></table></div></div>
+      </main>
+    </div>
+  </div>
+  <script src="/js/admin/api.js"></script>
+  <script src="/js/admin/ui.js"></script>
+  <script src="/js/admin/auth.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/admin/visitors.js"></script>
+</body>
+</html>

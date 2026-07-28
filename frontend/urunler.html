@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="tr" class="bg-background">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ürünler | KAYRAB Aluminyum</title>
+  <meta name="description" content="Kış bahçesi, bioklimatik pergola, korkuluk, cam balkon, giydirme cephe ve alüminyum doğrama sistemleri." />
+  <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <link rel="stylesheet" href="/css/tailwind.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body class="font-sans antialiased">
+  <div data-include="/components/navbar.html"></div>
+  <main class="pt-28 min-h-screen">
+    <section class="border-b border-border bg-card/30">
+      <div class="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+        <div class="reveal"><p class="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary"><span class="h-px w-8 bg-primary"></span><span data-i18n="nav.products">Ürünler</span></p></div>
+        <h1 class="reveal mt-4 max-w-3xl font-display text-4xl font-bold tracking-tight text-balance sm:text-5xl" data-i18n="products.heading">Her ölçekte alüminyum sistem çözümleri</h1>
+        <p class="reveal mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground" data-i18n="products.sub">Konfor, güvenlik ve estetiği bir araya getiren; mühendislik odaklı ürün gamımızı keşfedin.</p>
+      </div>
+    </section>
+    <div class="mx-auto max-w-6xl px-5 py-16 sm:py-24">
+      <div class="flex flex-col gap-24" id="zigzag-list"></div>
+    </div>
+  </main>
+  <div data-include="/components/footer.html"></div>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/data.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+    async function render() {
+      const api = await API.products();
+      const products = (api && api.length) ? api : DATA.products;
+      const lang = I18N.getLang();
+      const list = document.getElementById("zigzag-list");
+      list.innerHTML = products.sort((a,b)=>(a.order||0)-(b.order||0)).map((p, i) => {
+        const reversed = i % 2 === 1;
+        const title = lang === "en" ? (p.titleEn || p.titleTr) : (p.titleTr || p.titleEn);
+        const desc = lang === "en" ? (p.descEn || p.descTr) : (p.descTr || p.descEn);
+        const feats = [I18N.t("feature.1"), I18N.t("feature.2"), I18N.t("feature.3")].map(f => `<li class="flex items-center gap-3 text-foreground"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="h-3.5 w-3.5"><polyline points="20 6 9 17 4 12"/></svg></span>${f}</li>`).join("");
+        return `<section id="${p.slug}" class="scroll-mt-28 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div class="reveal ${reversed ? 'lg:order-2' : ''}">
+            <div class="group relative overflow-hidden rounded-3xl border border-border shadow-2xl shadow-black/30">
+              <img src="${resolveUrl(p.image)}" alt="${title}" class="aspect-[4/3] w-full object-cover" loading="lazy" draggable="false"/>
+              <span class="absolute left-5 top-5 rounded-full bg-background/70 px-3 py-1 font-display text-xs font-semibold tracking-wider text-primary backdrop-blur">${p.code || ""}</span>
+            </div>
+          </div>
+          <div class="${reversed ? 'lg:order-1' : ''}">
+            <h2 class="reveal font-display text-3xl font-bold tracking-tight sm:text-4xl">${title}</h2>
+            <p class="reveal mt-4 text-lg leading-relaxed text-muted-foreground" style="transition-delay:.08s">${desc || ""}</p>
+            <ul class="reveal mt-6 flex flex-col gap-3" style="transition-delay:.16s">${feats}</ul>
+            <a class="reveal group mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.03] active:scale-95" href="/iletisim.html" style="transition-delay:.24s" data-i18n="cta.quote">Teklif Al</a>
+          </div>
+        </section>`;
+      }).join("");
+      I18N.apply();
+      App.initReveal();
+    }
+    document.addEventListener("app-ready", render);
+    document.addEventListener("langchange", render);
+  </script>
+</body>
+</html>

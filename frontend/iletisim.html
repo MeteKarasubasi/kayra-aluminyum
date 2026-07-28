@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="tr" class="bg-background">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>İletişim | KAYRAB Aluminyum</title>
+  <meta name="description" content="KAYRAB Aluminyum ile iletişime geçin. Teklif talebi, proje danışmanlığı ve sorularınız için bize ulaşın." />
+  <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <link rel="stylesheet" href="/css/tailwind.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body class="font-sans antialiased">
+  <div data-include="/components/navbar.html"></div>
+  <main class="pt-28 min-h-screen">
+    <section class="border-b border-border bg-card/30">
+      <div class="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+        <div class="reveal"><p class="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary"><span class="h-px w-8 bg-primary"></span><span data-i18n="contact.tag">İLETİŞİM</span></p></div>
+        <h1 class="reveal mt-4 max-w-3xl font-display text-4xl font-bold tracking-tight text-balance sm:text-5xl" data-i18n="contact.page.heading">Projeleriniz için yanınızdayız</h1>
+        <p class="reveal mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground" data-i18n="contact.page.sub">Sorularınız, teklif talepleriniz veya iş birliği fırsatları için bize ulaşın.</p>
+      </div>
+    </section>
+    <div class="mx-auto max-w-6xl px-5 py-16 sm:py-24">
+      <div class="grid gap-12 lg:grid-cols-5 lg:gap-16">
+        <div class="lg:col-span-3">
+          <div class="reveal"><h2 class="font-display text-2xl font-bold tracking-tight" data-i18n="contact.title">Bize Ulaşın</h2><p class="mt-2 text-muted-foreground" data-i18n="contact.desc">Sorularınız ve teklif talepleriniz için formu doldurun; en kısa sürede dönüş yapalım.</p></div>
+          <form id="contact-form" class="reveal mt-8 space-y-5" novalidate style="transition-delay:.24s">
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="contact-name" class="mb-2 block text-sm font-medium text-foreground" data-i18n="contact.name">Ad Soyad</label>
+                <input id="contact-name" name="name" type="text" required placeholder="Adınız Soyadınız" class="h-12 w-full rounded-xl border border-border bg-card/60 px-4 text-foreground placeholder:text-muted-foreground/50 backdrop-blur transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20" />
+              </div>
+              <div>
+                <label for="contact-email" class="mb-2 block text-sm font-medium text-foreground" data-i18n="contact.email">E-posta</label>
+                <input id="contact-email" name="email" type="email" required placeholder="email@example.com" class="h-12 w-full rounded-xl border border-border bg-card/60 px-4 text-foreground placeholder:text-muted-foreground/50 backdrop-blur transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20" />
+              </div>
+            </div>
+            <div>
+              <label for="contact-phone" class="mb-2 block text-sm font-medium text-foreground" data-i18n="contact.phone">Telefon</label>
+              <div id="phone-mount"></div>
+            </div>
+            <div>
+              <label for="contact-system" class="mb-2 block text-sm font-medium text-foreground">İlgilenilen Sistem</label>
+              <select id="contact-system" name="system" class="h-12 w-full rounded-xl border border-border bg-card/60 px-4 text-foreground backdrop-blur transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20">
+                <option value="">Seçiniz</option>
+                <option value="Kış Bahçesi Sistemleri">Kış Bahçesi Sistemleri</option>
+                <option value="Bioklimatik Pergola">Bioklimatik Pergola</option>
+                <option value="Korkuluk Sistemleri">Korkuluk Sistemleri</option>
+                <option value="Cam Balkon & Sürme Sistemler">Cam Balkon & Sürme Sistemler</option>
+                <option value="Giydirme Cephe">Giydirme Cephe</option>
+                <option value="Alüminyum Doğrama">Alüminyum Doğrama</option>
+                <option value="Diğer">Diğer</option>
+              </select>
+            </div>
+            <input type="text" name="honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />
+            <div>
+              <label for="contact-message" class="mb-2 block text-sm font-medium text-foreground" data-i18n="contact.message">Mesajınız</label>
+              <textarea id="contact-message" name="message" required minlength="10" rows="5" placeholder="Projeniz hakkında bilgi verin..." class="w-full resize-none rounded-xl border border-border bg-card/60 px-4 py-3 text-foreground placeholder:text-muted-foreground/50 backdrop-blur transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"></textarea>
+              <p class="mt-1.5 text-xs text-muted-foreground" data-i18n="contact.message.hint">En az 10 karakter</p>
+            </div>
+            <button type="submit" class="group inline-flex items-center gap-2.5 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:scale-[1.03] active:scale-95 disabled:pointer-events-none disabled:opacity-60"><span data-i18n="contact.send">Gönder</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4 transition-transform group-hover:translate-x-0.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+            <div id="form-status"></div>
+          </form>
+        </div>
+        <div class="lg:col-span-2">
+          <div class="reveal"><h2 class="font-display text-2xl font-bold tracking-tight" data-i18n="contact.info">İletişim Bilgileri</h2><p class="mt-2 text-muted-foreground" data-i18n="contact.info.desc">Aşağıdaki kanallardan bize doğrudan ulaşabilirsiniz.</p></div>
+          <div class="mt-8 space-y-4" id="info-cards"></div>
+        </div>
+      </div>
+      <div class="reveal mt-20">
+        <h2 class="mb-6 font-display text-2xl font-bold tracking-tight" data-i18n="contact.map.title">Konumumuz</h2>
+        <div class="overflow-hidden rounded-2xl border border-border">
+          <iframe id="map-iframe" title="KAYRAB Aluminyum Konum" src="https://maps.google.com/maps?q=Ankara%20Organize%20Sanayi%20B%C3%B6lgesi&output=embed" width="100%" height="400" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="grayscale transition-[filter] duration-500 hover:grayscale-0"></iframe>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div data-include="/components/footer.html"></div>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/countries.js"></script>
+  <script src="/js/phone-input.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+    function infoCard(iconSvg, label, value, href) {
+      return `<div class="reveal group rounded-2xl border border-border bg-card/40 p-5 backdrop-blur transition-colors hover:border-primary/30">
+        <div class="flex gap-4">
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">${iconSvg}</span>
+          <div>
+            <p class="text-sm font-semibold text-foreground">${label}</p>
+            ${href ? `<a href="${href}" class="mt-0.5 text-sm text-muted-foreground transition-colors hover:text-primary">${value}</a>` : `<p class="mt-0.5 text-sm text-muted-foreground">${value}</p>`}
+          </div>
+        </div>
+      </div>`;
+    }
+    const ICONS = {
+      pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+      phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+      mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
+      clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+    };
+    async function applySettings() {
+      const s = await API.settings();
+      const lang = I18N.getLang();
+      const address = (s && s[lang === "en" ? "address_en" : "address_tr"]) || I18N.t("contact.address.value");
+      const phone = (s && s.phone) || I18N.t("contact.phone.value");
+      const email = (s && s.email) || I18N.t("contact.email.value");
+      const hours = (s && s[lang === "en" ? "hours_en" : "hours_tr"]) || I18N.t("contact.hours.value");
+      const mapsLink = (s && s.google_maps_link) || "https://maps.google.com/maps?q=Ankara+Organize+Sanayi+B%C3%B6lgesi&output=embed";
+      const mapIframe = document.getElementById("map-iframe");
+      if (mapIframe) mapIframe.src = mapsLink.includes("output=embed") ? mapsLink : (mapsLink + (mapsLink.includes("?") ? "&" : "?") + "output=embed");
+      const cards = [
+        { icon: ICONS.pin, label: I18N.t("contact.address"), value: address },
+        { icon: ICONS.phone, label: I18N.t("contact.phone"), value: phone, href: `tel:${phone.replace(/\s+/g,"")}` },
+        { icon: ICONS.mail, label: I18N.t("contact.email"), value: email, href: `mailto:${email}` },
+        { icon: ICONS.clock, label: I18N.t("contact.hours"), value: hours },
+      ];
+      document.getElementById("info-cards").innerHTML = cards.map(c => infoCard(c.icon, c.label, c.value, c.href)).join("");
+      I18N.apply(); App.initReveal();
+    }
+    document.addEventListener("app-ready", () => {
+      applySettings();
+      document.getElementById("phone-mount").innerHTML = PhoneInput.field("", I18N.getLang());
+      PhoneInput.bind(document.getElementById("phone-mount"));
+      const form = document.getElementById("contact-form");
+      const status = document.getElementById("form-status");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(form));
+        if (data.honey && data.honey.trim()) { status.innerHTML = `<div class="flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-400"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>${I18N.t("contact.sent")}</div>`; form.reset(); return; }
+        if (!data.name || !data.email || !data.message || data.message.length < 10) {
+          status.innerHTML = `<div class="flex items-start gap-2 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>${I18N.t("contact.error")}</span></div>`;
+          return;
+        }
+        const phoneOut = document.querySelector("#phone-output") || { value: data.phone || "" };
+        const btn = form.querySelector("button[type=submit]");
+        const orig = btn.innerHTML;
+        btn.innerHTML = I18N.t("contact.sending"); btn.disabled = true;
+        try {
+          await API.contact({ name: data.name, email: data.email, phone: phoneOut.value, message: data.message, system: data.system || null, language: I18N.getLang() });
+          status.innerHTML = `<div class="flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-400"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>${I18N.t("contact.sent")}</div>`;
+          form.reset();
+          document.getElementById("phone-mount").innerHTML = PhoneInput.field("", I18N.getLang());
+          PhoneInput.bind(document.getElementById("phone-mount"));
+        } catch (err) {
+          status.innerHTML = `<div class="flex items-start gap-2 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>${I18N.t("contact.error")}</span></div>`;
+        } finally { btn.innerHTML = orig; btn.disabled = false; }
+      });
+    });
+    document.addEventListener("langchange", () => {
+      applySettings();
+      const cur = (document.querySelector("#phone-output") || {}).value || "";
+      document.getElementById("phone-mount").innerHTML = PhoneInput.field(cur, I18N.getLang());
+      PhoneInput.bind(document.getElementById("phone-mount"));
+    });
+  </script>
+</body>
+</html>

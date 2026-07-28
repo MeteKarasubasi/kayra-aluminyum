@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="tr" class="bg-background">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KAYRAB Aluminyum | Alüminyum & Cam Sistemleri</title>
+  <meta name="description" content="KAYRAB Aluminyum; kış bahçesi, bioklimatik pergola, korkuluk, cam balkon, giydirme cephe ve alüminyum doğrama sistemlerinde güvenilir çözüm ortağınız." />
+  <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <link rel="stylesheet" href="/css/tailwind.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body class="font-sans antialiased">
+  <div data-include="/components/navbar.html"></div>
+
+  <main class="min-h-screen">
+    <!-- Hero -->
+    <section class="relative flex min-h-[100svh] items-center overflow-hidden">
+      <div class="absolute inset-0 -z-20 will-transform" style="animation: heroZoom 1.6s cubic-bezier(.22,1,.36,1) both;">
+        <img src="/images/hero-facade.png" alt="Modern alüminyum ve cam cepheli lüks villa" class="h-full w-full object-cover" draggable="false"/>
+      </div>
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-background via-background/85 to-background/30"></div>
+      <div class="absolute inset-0 -z-10 bg-gradient-to-t from-background via-transparent to-background/60"></div>
+
+      <div class="mx-auto grid w-full max-w-7xl gap-12 px-4 pt-28 pb-16 sm:px-6 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-8">
+          <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-4 py-1.5 text-xs font-semibold tracking-[0.25em] text-primary backdrop-blur" style="animation: fadeUp .6s .15s both;" data-i18n="hero.tag">ALÜMİNYUM & CAM SİSTEMLERİ</span>
+          <h1 class="mt-6 max-w-3xl text-balance font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl" style="animation: fadeUp .7s .25s both;" data-i18n="hero.title">Işığı ve mekânı yeniden tasarlayan alüminyum çözümler</h1>
+          <p class="mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg" style="animation: fadeUp .7s .4s both;" data-i18n="hero.desc">KAYRAB Aluminyum; kış bahçesinden giydirme cepheye, mimari vizyonunuzu hassas mühendislik ve kusursuz işçilikle hayata geçirir.</p>
+          <div class="mt-9 flex flex-wrap items-center gap-4" style="animation: fadeUp .7s .55s both;">
+            <a href="/urunler.html" class="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.03] active:scale-95" data-i18n="hero.cta1">Ürünleri Keşfet</a>
+            <a href="/katalog.html" class="group inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur transition-colors hover:border-primary" data-i18n="hero.cta2">Kataloğu İncele</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-4 self-end lg:col-span-4 lg:grid-cols-1 lg:gap-0" style="animation: fadeUp .7s .7s both;">
+          <div class="border-border py-4 lg:border-t lg:first:border-t-0 lg:py-5"><div class="font-display text-3xl font-bold text-primary sm:text-4xl">850+</div><div class="mt-1 text-xs text-muted-foreground sm:text-sm" data-i18n="hero.stat1">Tamamlanan Proje</div></div>
+          <div class="border-border py-4 lg:border-t lg:first:border-t-0 lg:py-5"><div class="font-display text-3xl font-bold text-primary sm:text-4xl">22</div><div class="mt-1 text-xs text-muted-foreground sm:text-sm" data-i18n="hero.stat2">Yıllık Tecrübe</div></div>
+          <div class="border-border py-4 lg:border-t lg:first:border-t-0 lg:py-5"><div class="font-display text-3xl font-bold text-primary sm:text-4xl">140+</div><div class="mt-1 text-xs text-muted-foreground sm:text-sm" data-i18n="hero.stat3">Kurumsal Referans</div></div>
+        </div>
+      </div>
+
+      <div aria-hidden class="absolute bottom-6 left-1/2 hidden -translate-x-1/2 md:block" style="animation: scrollHint 1.8s ease-in-out infinite;">
+        <div class="flex h-9 w-5 items-start justify-center rounded-full border border-border p-1"><span class="h-2 w-1 rounded-full bg-primary"></span></div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section id="urunler" class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+      <div class="reveal"><div id="hotspots-mount"></div></div>
+      <div class="mt-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+        <div class="max-w-2xl">
+          <div class="reveal"><span class="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.3em] text-primary"><span class="h-px w-8 bg-primary"></span><span data-i18n="products.tag">ÜRÜNLER</span></span></div>
+          <h2 class="reveal mt-4 text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl" data-i18n="products.title">Sistem Çözümlerimiz</h2>
+          <p class="reveal mt-4 text-pretty text-base leading-relaxed text-muted-foreground" data-i18n="products.desc">Her mekân için mühendislik odaklı, dayanıklı ve estetik alüminyum sistemleri.</p>
+        </div>
+        <div class="reveal" style="transition-delay:.16s"><a href="/urunler.html" class="group inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-border px-5 py-2.5 text-sm font-semibold transition-colors hover:border-primary hover:text-primary" data-i18n="products.all">Tüm Ürünler</a></div>
+      </div>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="products-grid"></div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projeler" class="border-y border-border bg-card/30">
+      <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div class="max-w-2xl">
+            <div class="reveal"><span class="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.3em] text-primary"><span class="h-px w-8 bg-primary"></span><span data-i18n="projects.tag">PROJELER</span></span></div>
+            <h2 class="reveal mt-4 text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl" data-i18n="projects.title">Güncel Projeler</h2>
+            <p class="reveal mt-4 text-pretty text-base leading-relaxed text-muted-foreground" data-i18n="projects.desc">Türkiye genelinde konut, ticari ve kurumsal projelerdeki imzamız.</p>
+          </div>
+          <div class="reveal" style="transition-delay:.16s"><a href="/projeler.html" class="group inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-border px-5 py-2.5 text-sm font-semibold transition-colors hover:border-primary hover:text-primary" data-i18n="projects.all">Tümünü Görüntüle</a></div>
+        </div>
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" id="projects-grid"></div>
+      </div>
+    </section>
+
+    <!-- References -->
+    <section id="referanslar" class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+        <div class="max-w-2xl">
+          <div class="reveal"><span class="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.3em] text-primary"><span class="h-px w-8 bg-primary"></span><span data-i18n="refs.tag">REFERANSLAR</span></span></div>
+          <h2 class="reveal mt-4 text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl" data-i18n="refs.title">Bize Güvenenler</h2>
+          <p class="reveal mt-4 text-pretty text-base leading-relaxed text-muted-foreground" data-i18n="refs.desc">Kurumsal iş ortaklarımız ve tamamladığımız markalar.</p>
+        </div>
+        <div class="reveal" style="transition-delay:.16s"><a href="/referanslar.html" class="group inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-border px-5 py-2.5 text-sm font-semibold transition-colors hover:border-primary hover:text-primary" data-i18n="projects.all">Tümünü Görüntüle</a></div>
+      </div>
+      <div class="mt-14 flex flex-col gap-4 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+        <div class="group relative flex overflow-hidden"><div class="flex shrink-0 items-center gap-4 pr-4 will-transform" id="refs-row-1" style="animation: marquee 32s linear infinite;"></div></div>
+        <div class="group relative flex overflow-hidden"><div class="flex shrink-0 items-center gap-4 pr-4 will-transform" id="refs-row-2" style="animation: marquee 32s linear infinite reverse;"></div></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
+      <div class="reveal relative overflow-hidden rounded-3xl border border-border bg-card px-6 py-16 text-center sm:px-12">
+        <div class="grain pointer-events-none absolute inset-0 opacity-40"></div>
+        <svg viewBox="0 0 48 48" fill="none" class="mx-auto mb-6 h-12 w-12 opacity-90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 3v42h20v-6H12V3H6z" fill="var(--foreground)"/>
+          <path d="M17 6 L28 6 L21 42 L15 42 Z" fill="var(--primary)" opacity="0.55"/>
+          <path d="M23 6 L33 6 L26 42 L20 42 Z" fill="var(--primary)" opacity="0.8"/>
+          <path d="M29 6 L39 6 L32 42 L26 42 Z" fill="var(--primary)"/>
+        </svg>
+        <h2 class="mx-auto max-w-2xl text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl" data-i18n="cta.title">Projeniz için birlikte çalışalım</h2>
+        <p class="mx-auto mt-4 max-w-lg text-pretty text-muted-foreground" data-i18n="cta.desc">Ücretsiz keşif ve teklif için ekibimizle iletişime geçin.</p>
+        <a href="/iletisim.html" class="group mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.03] active:scale-95" data-i18n="cta.button">Teklif Al</a>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="/components/footer.html"></div>
+
+  <script src="/js/i18n.js"></script>
+  <script src="/js/data.js"></script>
+  <script src="/js/countries.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/hotspots.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+    function productCard(p, i) {
+      const lang = I18N.getLang();
+      const title = lang === "en" ? (p.titleEn || p.titleTr) : (p.titleTr || p.titleEn);
+      const desc = lang === "en" ? (p.descEn || p.descTr) : (p.descTr || p.descEn);
+      const img = p.image || "/images/placeholder.svg";
+      return `<a class="product-card reveal block scroll-mt-24" href="/urunler.html#${p.slug}" style="transition-delay:${(i%3)*0.08}s">
+        <div class="group relative block overflow-hidden rounded-2xl border border-border bg-card">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src="${resolveUrl(img)}" alt="${title}" class="h-full w-full object-cover transition-transform duration-700 ease-out will-transform group-hover:scale-105" loading="lazy" draggable="false"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent"></div>
+            <span class="absolute left-4 top-4 rounded-full bg-background/70 px-3 py-1 font-display text-xs font-semibold tracking-wider text-primary backdrop-blur">${p.code || ""}</span>
+            <span class="absolute bottom-4 right-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform duration-300 group-hover:rotate-90"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-lg font-bold tracking-tight text-foreground">${title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted-foreground">${desc || ""}</p>
+          </div>
+        </div>
+      </a>`;
+    }
+    function projectCard(p) {
+      const catLabel = I18N.t("projects.filter." + (p.category || "all"));
+      return `<a class="project-card reveal" href="/projeler/${p.slug}.html" style="transition-delay:${0}s">
+        <div class="group">
+          <article class="relative aspect-[3/4] overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5">
+            <img src="${resolveUrl(p.image)}" alt="${p.title}" class="h-full w-full object-cover transition-transform duration-700 ease-out will-transform group-hover:scale-110" loading="lazy" draggable="false"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-background via-background/25 to-transparent"></div>
+            <span class="absolute left-4 top-4 rounded-full bg-background/70 px-3 py-1 text-xs font-semibold tracking-wide text-primary backdrop-blur">${catLabel}</span>
+            <span class="absolute right-4 top-4 inline-flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-primary text-primary-foreground opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+            <div class="absolute inset-x-0 bottom-0 p-5">
+              <h3 class="font-display text-xl font-bold tracking-tight text-foreground">${p.title}</h3>
+              <p class="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-3.5 w-3.5 text-primary"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${p.location}</p>
+            </div>
+          </article>
+        </div>
+      </a>`;
+    }
+    function refChip(r) {
+      return `<div class="flex h-20 min-w-[180px] items-center justify-center rounded-xl border border-border bg-white px-6 transition-all duration-300 hover:border-primary/30">
+              ${r.logo ? `<img src="${resolveUrl(r.logo)}" alt="${r.name}" class="h-8 w-8 object-contain opacity-50 grayscale transition-all duration-300 group-hover:opacity-70" loading="lazy" draggable="false"/>` : `<span class="font-display text-lg font-bold tracking-wide text-muted-foreground transition-colors hover:text-primary">${r.name}</span>`}
+      </div>`;
+    }
+    async function render() {
+      const [apiProducts, apiProjects, apiRefs] = await Promise.all([API.products(), API.projects(), API.references()]);
+      const products = (apiProducts && apiProducts.length) ? apiProducts : DATA.products;
+      const projects = (apiProjects && apiProjects.length) ? apiProjects : DATA.projects;
+      const refs = (apiRefs && apiRefs.length) ? apiRefs : DATA.references;
+
+      Hotspots.render(products, document.getElementById("hotspots-mount"));
+      document.getElementById("products-grid").innerHTML = products.map(productCard).join("");
+      document.getElementById("projects-grid").innerHTML = projects.slice(0, 4).map(projectCard).join("");
+
+      const mid = Math.ceil(refs.length / 2);
+      const r1 = refs.slice(0, mid).map(refChip).join("");
+      const r2 = refs.slice(mid).map(refChip).join("");
+      document.getElementById("refs-row-1").innerHTML = r1 + r1;
+      document.getElementById("refs-row-2").innerHTML = r2 + r2;
+
+      I18N.apply();
+      App.initReveal();
+    }
+    document.addEventListener("app-ready", render);
+    document.addEventListener("langchange", () => render());
+  </script>
+</body>
+</html>

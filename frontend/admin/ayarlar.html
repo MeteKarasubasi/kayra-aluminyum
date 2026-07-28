@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ayarlar | KAYRAB Admin</title>
+  <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <div class="app">
+    <div data-include="/components/admin-sidebar.html"></div>
+    <div class="main">
+      <header class="topbar">
+        <div class="left flex gap-2"><button class="burger btn btn-soft btn-sm">☰</button><h1>Ayarlar</h1></div>
+        <div class="user"><span class="text-sm text-muted" data-user-email></span><span class="avatar" data-user-initial>?</span></div>
+      </header>
+      <main class="content">
+        <form id="settings-form">
+          <div class="card card-pad mb-4">
+            <div class="section-head">Marka</div>
+            <div class="form-grid">
+              <div class="field"><label>Logo Metni</label><input data-k="logo_text"/></div>
+              <div class="field"><label>Logo Alt Metni</label><input data-k="logo_subtext"/></div>
+              <div class="field full"><label>Logo URL (opsiyonel görsel)</label><input data-k="logo_url"/></div>
+            </div>
+          </div>
+          <div class="card card-pad mb-4">
+            <div class="section-head">İletişim</div>
+            <div class="form-grid">
+              <div class="field"><label>Telefon</label><input data-k="phone"/></div>
+              <div class="field"><label>Telefon 2</label><input data-k="phone2"/></div>
+              <div class="field"><label>WhatsApp</label><input data-k="whatsapp"/></div>
+              <div class="field"><label>E-posta</label><input data-k="email"/></div>
+              <div class="field full"><label>Adres (TR)</label><input data-k="address_tr"/></div>
+              <div class="field full"><label>Adres (EN)</label><input data-k="address_en"/></div>
+              <div class="field"><label>Çalışma Saatleri (TR)</label><input data-k="hours_tr"/></div>
+              <div class="field"><label>Çalışma Saatleri (EN)</label><input data-k="hours_en"/></div>
+              <div class="field full"><label>Google Maps Linki</label><input data-k="google_maps_link"/></div>
+            </div>
+          </div>
+          <div class="card card-pad mb-4">
+            <div class="section-head">Sosyal Medya</div>
+            <div class="form-grid">
+              <div class="field"><label>Instagram</label><input data-k="instagram"/></div>
+              <div class="field"><label>Facebook</label><input data-k="facebook"/></div>
+              <div class="field"><label>YouTube</label><input data-k="youtube"/></div>
+              <div class="field"><label>LinkedIn</label><input data-k="linkedin"/></div>
+            </div>
+          </div>
+          <div class="card card-pad mb-4">
+            <div class="section-head">SEO & Slogan</div>
+            <div class="form-grid">
+              <div class="field full"><label>Site Başlığı</label><input data-k="site_title"/></div>
+              <div class="field full"><label>Slogan</label><input data-k="slogan"/></div>
+              <div class="field full"><label>SEO Açıklaması</label><textarea data-k="seo_description"></textarea></div>
+            </div>
+          </div>
+          <div class="card card-pad mb-4">
+            <div class="section-head">Katalog</div>
+            <div class="form-grid">
+              <div class="field full" id="catalog-upload-field"></div>
+              <div class="field full"><label>Katalog PDF URL</label><input data-k="catalog_pdf_url" placeholder="http://localhost:5281/docs/kayra-katalog.pdf"/></div>
+              <div class="field full" id="catalog-pdf-preview"></div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Tümünü Kaydet</button>
+        </form>
+      </main>
+    </div>
+  </div>
+  <script src="/js/admin/api.js"></script>
+  <script src="/js/admin/ui.js"></script>
+  <script src="/js/admin/auth.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/admin/settings.js"></script>
+</body>
+</html>

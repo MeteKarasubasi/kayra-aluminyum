@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="tr" class="bg-background">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projeler | KAYRAB Aluminyum</title>
+  <meta name="description" content="KAYRAB Aluminyum'un konut, ticari ve kurumsal referans projeleri." />
+  <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <link rel="stylesheet" href="/css/tailwind.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body class="font-sans antialiased">
+  <div data-include="/components/navbar.html"></div>
+  <main class="pt-28 min-h-screen">
+    <section class="border-b border-border bg-card/30">
+      <div class="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+        <div class="reveal"><p class="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary"><span class="h-px w-8 bg-primary"></span><span data-i18n="projects.tag">PROJELER</span></p></div>
+        <h1 class="reveal mt-4 max-w-3xl font-display text-4xl font-bold tracking-tight text-balance sm:text-5xl" data-i18n="projects.heading">Hayata geçirdiğimiz projeler</h1>
+        <p class="reveal mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground" data-i18n="projects.sub">Konut, ticari ve kurumsal alanlarda tamamladığımız seçili işler.</p>
+      </div>
+    </section>
+    <div class="mx-auto max-w-6xl px-5 py-12 sm:py-16">
+      <div class="mb-10 flex flex-wrap gap-2" id="filters">
+        <button type="button" class="filter-btn active" data-cat="" data-i18n="projects.filter.all">Hepsi</button>
+        <button type="button" class="filter-btn" data-cat="residential" data-i18n="projects.filter.residential">Konut</button>
+        <button type="button" class="filter-btn" data-cat="commercial" data-i18n="projects.filter.commercial">Ticari</button>
+        <button type="button" class="filter-btn" data-cat="corporate" data-i18n="projects.filter.corporate">Kurumsal</button>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" id="projects-grid"></div>
+    </div>
+  </main>
+  <div data-include="/components/footer.html"></div>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/data.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+    function projectCard(p) {
+      const catLabel = I18N.t("projects.filter." + (p.category || "all"));
+      const img = resolveUrl(p.image);
+      return `<a class="project-card reveal" href="/projeler/${p.slug}.html">
+        <div class="group">
+          <article class="relative aspect-[3/4] overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5">
+            <img src="${img}" alt="${p.title}" class="h-full w-full object-cover transition-transform duration-700 ease-out will-transform group-hover:scale-110" loading="lazy" draggable="false"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-background via-background/25 to-transparent"></div>
+            <span class="absolute left-4 top-4 rounded-full bg-background/70 px-3 py-1 text-xs font-semibold tracking-wide text-primary backdrop-blur">${catLabel}</span>
+            <span class="absolute right-4 top-4 inline-flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-primary text-primary-foreground opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+            <div class="absolute inset-x-0 bottom-0 p-5">
+              <h3 class="font-display text-xl font-bold tracking-tight text-foreground">${p.title}</h3>
+              <p class="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-3.5 w-3.5 text-primary"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${p.location}</p>
+            </div>
+          </article>
+        </div>
+      </a>`;
+    }
+    let all = [];
+    async function load() {
+      const api = await API.projects();
+      all = ((api && api.length) ? api : DATA.projects).sort((a,b)=>(a.order||0)-(b.order||0));
+      render("");
+    }
+    function render(cat) {
+      const list = cat ? all.filter(p => p.category === cat) : all;
+      document.getElementById("projects-grid").innerHTML = list.map(projectCard).join("");
+      I18N.apply(); App.initReveal();
+    }
+    function setActiveFilter(cat) {
+      document.querySelectorAll(".filter-btn").forEach(b => {
+        b.classList.toggle("active", b.dataset.cat === cat);
+      });
+    }
+    document.addEventListener("app-ready", () => {
+      load();
+      setActiveFilter("");
+      document.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => {
+        const cat = b.dataset.cat;
+        setActiveFilter(cat);
+        render(cat);
+      }));
+    });
+    document.addEventListener("langchange", () => render(document.querySelector(".filter-btn.active")?.dataset.cat || ""));
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="tr" class="bg-background">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Referanslar | KAYRAB Aluminyum</title>
+  <meta name="description" content="KAYRAB Aluminyum'un güvenilir iş ortakları ve kurumsal referansları." />
+  <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <link rel="stylesheet" href="/css/tailwind.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body class="font-sans antialiased">
+  <div data-include="/components/navbar.html"></div>
+  <main class="pt-28 min-h-screen">
+    <section class="border-b border-border bg-card/30">
+      <div class="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+        <div class="reveal"><p class="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary"><span class="h-px w-8 bg-primary"></span><span data-i18n="refs.tag">REFERANSLAR</span></p></div>
+        <h1 class="reveal mt-4 max-w-3xl font-display text-4xl font-bold tracking-tight text-balance sm:text-5xl" data-i18n="refs.page.heading">Güven veren iş birlikleri</h1>
+        <p class="reveal mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground" data-i18n="refs.page.sub">Türkiye'nin önde gelen markalarıyla gerçekleştirdiğimiz projeler, kalitemizin en güçlü kanıtıdır.</p>
+      </div>
+    </section>
+    <div class="mx-auto max-w-6xl px-5 py-16 sm:py-24">
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6" id="refs-grid"></div>
+      <div class="reveal mt-20 grid grid-cols-2 gap-6 sm:grid-cols-4" id="refs-stats"></div>
+    </div>
+  </main>
+  <div data-include="/components/footer.html"></div>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/data.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+    async function render() {
+      const api = await API.references();
+      const refs = (api && api.length) ? api : DATA.references;
+      document.getElementById("refs-grid").innerHTML = refs.map((r, i) => {
+        const logo = resolveUrl(r.logo);
+        return `
+        <a class="reveal group relative flex aspect-[3/2] flex-col items-center justify-center overflow-hidden rounded-2xl border border-border bg-white p-6 transition-all duration-500 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5" href="${r.website || "#"}" ${r.website ? 'target="_blank" rel="noopener noreferrer"' : ''} style="transition-delay:${(i%6)*0.06}s">
+          <div class="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"><div class="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary/5 via-transparent to-primary/5"></div></div>
+          ${logo ? `<div class="relative flex h-16 w-full items-center justify-center"><img src="${logo}" alt="${r.name} logosu" class="max-h-14 max-w-[140px] object-contain opacity-50 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110" loading="lazy" draggable="false"/></div>` : `<span class="relative text-center font-display text-sm font-semibold tracking-wide text-muted-foreground transition-colors duration-300 group-hover:text-primary">${r.name}</span>`}
+        </a>`;
+      }).join("");
+      const stats = [
+        { v: `${refs.length}+`, l: "Kurumsal Referans" },
+        { v: "850+", l: "Tamamlanan Proje" },
+        { v: "22", l: "Yıllık Tecrübe" },
+        { v: "%100", l: "Müşteri Memnuniyeti" },
+      ];
+      document.getElementById("refs-stats").innerHTML = stats.map(s => `
+        <div class="rounded-2xl border border-border bg-card/40 p-6 text-center backdrop-blur"><div class="font-display text-3xl font-bold text-primary">${s.v}</div><div class="mt-1 text-sm text-muted-foreground">${s.l}</div></div>`).join("");
+      I18N.apply(); App.initReveal();
+    }
+    document.addEventListener("app-ready", render);
+  </script>
+</body>
+</html>

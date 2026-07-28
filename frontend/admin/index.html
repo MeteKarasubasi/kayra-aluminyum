@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Genel Bakış | KAYRAB Admin</title>
+  <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <div class="app">
+    <div data-include="/components/admin-sidebar.html"></div>
+    <div class="main">
+      <header class="topbar">
+        <div class="left flex gap-2">
+          <button class="burger btn btn-soft btn-sm" aria-label="Menü">☰</button>
+          <h1>Genel Bakış</h1>
+        </div>
+        <div class="user">
+          <span class="text-sm text-muted" data-user-email></span>
+          <span class="avatar" data-user-initial>?</span>
+        </div>
+      </header>
+      <main class="content">
+        <div class="stat-grid" id="stat-grid"></div>
+        <div class="grid-2 mt-8">
+          <div class="card card-pad">
+            <div class="section-head">Son Mesajlar</div>
+            <div id="recent-messages" class="table-wrap"></div>
+          </div>
+          <div class="card card-pad">
+            <div class="section-head">Hızlı İşlemler</div>
+            <div class="flex gap-2" style="flex-wrap:wrap">
+              <a class="btn btn-soft" href="/admin/projeler.html">+ Proje</a>
+              <a class="btn btn-soft" href="/admin/urunler.html">+ Ürün</a>
+              <a class="btn btn-soft" href="/admin/referanslar.html">+ Referans</a>
+              <a class="btn btn-soft" href="/admin/mesajlar.html">Mesajlar</a>
+              <button class="btn btn-outline" id="clear-cache">Önbelleği Temizle</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="/js/admin/api.js"></script>
+  <script src="/js/admin/ui.js"></script>
+  <script src="/js/admin/auth.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/admin/dashboard.js"></script>
+</body>
+</html>

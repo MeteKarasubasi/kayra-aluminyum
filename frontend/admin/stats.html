@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>İstatistikler | KAYRAB Admin</title>
+  <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <div class="app">
+    <div data-include="/components/admin-sidebar.html"></div>
+    <div class="main">
+      <header class="topbar">
+        <div class="left flex gap-2"><button class="burger btn btn-soft btn-sm">☰</button><h1>İstatistikler</h1></div>
+        <div class="user"><span class="text-sm text-muted" data-user-email></span><span class="avatar" data-user-initial>?</span></div>
+      </header>
+      <main class="content">
+        <div class="toolbar">
+          <select id="days" class="search" style="min-width:10rem">
+            <option value="7">Son 7 gün</option>
+            <option value="30" selected>Son 30 gün</option>
+            <option value="90">Son 90 gün</option>
+          </select>
+        </div>
+        <div class="card card-pad mb-4"><div class="section-head">Günlük Ziyaret</div><canvas id="chart-day" class="chart"></canvas></div>
+        <div class="grid-2">
+          <div class="card card-pad"><div class="section-head">En Çok Ziyaret Edilen Sayfalar</div><div id="by-path"></div></div>
+          <div class="card card-pad"><div class="section-head">Cihaz / Tarayıcı</div><div id="by-dev"></div></div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="/js/admin/api.js"></script>
+  <script src="/js/admin/ui.js"></script>
+  <script src="/js/admin/auth.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script src="/js/admin/stats.js"></script>
+</body>
+</html>
