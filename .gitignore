@@ -24,3 +24,7 @@ backend/KayraApi/wwwroot/uploads/*
 backend/KayraApi/wwwroot/docs/*
 !backend/KayraApi/wwwroot/uploads/.gitkeep
 !backend/KayraApi/wwwroot/docs/.gitkeep
+.env
+.env.*
+appsettings.Development.json
+appsettings.Production.json
